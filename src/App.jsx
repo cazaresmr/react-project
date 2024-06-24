@@ -21,18 +21,72 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Hello World</h1>
-        <form onSubmit={this.onSubmit}>
+      <div
+        style={{
+          maxWidth: "400px",
+          margin: "20px auto",
+          padding: "20px",
+          boxShadow: "0 0 10px rgba(0,0,0,0.1)",
+          borderRadius: "8px",
+          backgroundColor: "#f0f0f0",
+          border: "1px solid #aaa",
+        }}
+      >
+        <h1 style={{ textAlign: "center", color: "#333" }}>Todo List</h1>
+        <form
+          onSubmit={this.onSubmit}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "20px",
+          }}
+        >
           <input
             value={this.state.text}
             onChange={(e) => this.setState({ text: e.target.value })}
+            style={{
+              flex: "1",
+              padding: "10px",
+              fontSize: "16px",
+              border: "1px solid #ccc",
+              borderRadius: "4px",
+              marginRight: "10px",
+            }}
           />
-          <button type='submit'>Add</button>
+          <button
+            type='submit'
+            style={{
+              padding: "10px 20px",
+              fontSize: "16px",
+              backgroundColor: "#ccc",
+              color: "333",
+              border: "1px solid #333",
+              borderRadius: "4px",
+              cursor: "pointer",
+            }}
+          >
+            Add
+          </button>
         </form>
-        <ul>
+        <ul
+          style={{ listStyleType: "none", padding: "0", textAlign: "center" }}
+        >
           {this.state.list.map((item, index) => {
-            return <li key={index}>{item}</li>;
+            return (
+              <li
+                key={index}
+                style={{
+                  marginBottom: "10px",
+                  padding: "10px",
+                  backgroundColor: "#fff",
+                  border: "1px solid #ccc",
+                  borderRadius: "4px",
+                  textAlign: "left",
+                }}
+              >
+                {item}
+              </li>
+            );
           })}
         </ul>
       </div>
