@@ -1,10 +1,7 @@
-import { Component } from "react";
 import FilmsList from "./components/filmsList";
 
-class App extends Component {
-  render() {
-    return <FilmsList />;
-  }
+function App() {
+  return <FilmsList />;
 }
 
 export default App;
