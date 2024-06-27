@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
-import { filterFilmsByDirector, getListOf } from "../helpers/film.helpers";
+import {
+  filterFilmsByDirector,
+  getListOf,
+  getFilmStats,
+} from "../helpers/film.helpers";
+import { Link } from "react-router-dom";
 
 function FilmsPage() {
   const [list, setList] = useState([]);
@@ -7,7 +12,6 @@ function FilmsPage() {
 
   function getFilms() {
     fetch("https://studioghibliapi-d6fc8.web.app/films")
-      // fetch("https://ghibliapi.herokuapp.com/films")
       .then((response) => response.json())
       .then((films) => setList(films))
       .catch((error) => console.error(error));
@@ -19,6 +23,9 @@ function FilmsPage() {
 
   let filmsByDirector = filterFilmsByDirector(list, searchDirector);
   let directors = getListOf(list, "director");
+
+  getFilmStats(list);
+  let { avg_score, total, latest } = getFilmStats(list);
 
   return (
     <div>
@@ -44,9 +51,28 @@ function FilmsPage() {
           </select>
         </div>
       </form>
+      <div>
+        <div>
+          <br />
+          <span># Of Films: </span>
+          <span> {total}</span>
+        </div>
+        <div>
+          <span>Average Rating: </span>
+          <span>{avg_score.toFixed(2)}</span>
+        </div>
+        <div>
+          <span>Latest Film: </span>
+          <span>{latest}</span>
+        </div>
+      </div>
       <ul>
         {filmsByDirector.map((film) => {
-          return <li key={film.id}>{film.title}</li>;
+          return (
+            <li key={film.id}>
+              <Link to={`/films/${film.id}`}>{film.title}</Link>
+            </li>
+          );
         })}
       </ul>
     </div>
