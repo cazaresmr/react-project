@@ -40,3 +40,9 @@
 .read-the-docs {
   color: #888;
 }
+
+li {
+  text-align: left;
+  list-style-type: none;
+  line-height: 1.5;
+}
