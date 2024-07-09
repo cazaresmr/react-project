@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-function SingleFilmPage(props) {
+function SingleFilmPage() {
   const [item, setItem] = useState({});
   const { id } = useParams();
 

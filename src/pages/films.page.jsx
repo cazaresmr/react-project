@@ -50,16 +50,16 @@ function FilmsPage() {
       <div>
         <div>
           <br />
-          <span># Of Films: </span>
-          <span>{total}</span>
+          <span>Number Of Films</span>
+          <span className='spanMetric'>{total}</span>
         </div>
         <div>
-          <span>Average Rating: </span>
-          <span>{avg_score.toFixed(2)}</span>
+          <span>Average Rating</span>
+          <span className='spanMetric'>{avg_score.toFixed(2)}</span>
         </div>
         <div>
-          <span>Latest Film: </span>
-          <span>{latest}</span>
+          <span>Latest Film</span>
+          <span className='spanMetric'>{latest}</span>
         </div>
       </div>
       <ul>
