@@ -21,17 +21,16 @@ function FilmsPage() {
     getFilms();
   }, []);
 
-  let filmsByDirector = filterFilmsByDirector(list, searchDirector);
-  let directors = getListOf(list, "director");
+  const filmsByDirector = filterFilmsByDirector(list, searchDirector);
+  const directors = getListOf(list, "director");
 
-  getFilmStats(list);
-  let { avg_score, total, latest } = getFilmStats(list);
+  const { avg_score, total, latest } = getFilmStats(list);
 
   return (
     <div>
       <h1>Studio Ghibli Films</h1>
       <form>
-        <div className='for-group'>
+        <div className='form-group'>
           <label htmlFor='searchDirector'>Filter By Director</label>
           <select
             name='searchDirector'
@@ -40,14 +39,11 @@ function FilmsPage() {
             onChange={(e) => setSearchDirector(e.target.value)}
           >
             <option value=''>All</option>
-
-            {directors.map((director, idx) => {
-              return (
-                <option key={director + idx} value={director}>
-                  {director}
-                </option>
-              );
-            })}
+            {directors.map((director, idx) => (
+              <option key={director + idx} value={director}>
+                {director}
+              </option>
+            ))}
           </select>
         </div>
       </form>
@@ -55,7 +51,7 @@ function FilmsPage() {
         <div>
           <br />
           <span># Of Films: </span>
-          <span> {total}</span>
+          <span>{total}</span>
         </div>
         <div>
           <span>Average Rating: </span>
@@ -67,13 +63,11 @@ function FilmsPage() {
         </div>
       </div>
       <ul>
-        {filmsByDirector.map((film) => {
-          return (
-            <li key={film.id}>
-              <Link to={`/films/${film.id}`}>{film.title}</Link>
-            </li>
-          );
-        })}
+        {filmsByDirector.map((film) => (
+          <li key={film.id}>
+            <Link to={`/film/${film.id}`}>{film.title}</Link>
+          </li>
+        ))}
       </ul>
     </div>
   );
